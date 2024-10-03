@@ -1,0 +1,80 @@
+openapi: "3.0.3"
+info:
+  title: "API para un Fintech"
+  description: "Fintonic API"
+  contact:
+    email: speed21@outlook.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: "http://localhost:8080/api"
+tags:
+  - name: tasks
+    description: Petición para obtener la lista de tareas y crear una nueva tarea
+paths:
+  /tasks:
+    post:
+      tags:
+        - tasks
+      summary: "Crear una nueva trea"
+      operationId: "createTask"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskDTO"
+        required: true
+      responses:
+        "201":
+          description: "CREATED"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskDTO"
+        '404':
+          description: Task not found
+    get:
+      tags:
+        - tasks
+      summary: "Obtener la lista de tareas"
+      operationId: "getAllTasks"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/TaskDTO"
+components:
+  schemas:
+    TaskDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "66fdc3e387c6a151994e023f"
+        title:
+          type: string
+          example: "Learn Spring Boot"
+        description:
+          type: string
+          example: "Read and practice Spring Boot tutorials"
+        dueDate:
+          type: string
+          format: "date"
+          example: "25/12/2024"
+        tags:
+          type: "array"
+          items:
+            type: string
+            example: 
+              - "education"
+              - "technology"
+              - "springboot"
+        completed:
+          type: "boolean"
+          example: false
