@@ -25,4 +25,4 @@ docker-compose up
 
 ## Paso 5: Verificar la Ejecución
 
-Abre tu navegador y navega a http://localhost:8080//api/tasks para verificar que la aplicación esté funcionando correctamente. También puedes usar herramientas como Postman o curl para interactuar con el API.
+Abre tu navegador y navega a http://localhost:8080/api/tasks para verificar que la aplicación esté funcionando correctamente. También puedes usar herramientas como Postman o curl para interactuar con el API.
